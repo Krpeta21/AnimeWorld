@@ -1,6 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Icon } from 'react-native-elements'
 
 import AnimesStack from "./AnimesStack";
 import FavoritesStack from "./FavoritesStack";
@@ -18,8 +19,16 @@ const Tab = createBottomTabNavigator()
 export default function Navigation(){
     return(
         <NavigationContainer>
-            <Tab.Navigator>
-                             
+            <Tab.Navigator
+             initialRouteName="animes"
+             tabBarOptions={{
+                 inactiveTintColor: '#19282F',
+                 activeTintColor: '#E83A14'
+             }}
+             screenOptions={({route})  => ({
+                     tabBarIcon:({color})=>screenOptions(route,color)
+             })}
+            >                             
                 <Tab.Screen name='animes' 
                     component={AnimesStack}
                     options={{title:"Animes"}}
@@ -42,5 +51,28 @@ export default function Navigation(){
                 />
             </Tab.Navigator>
         </NavigationContainer>
+    )
+}
+function screenOptions(route,color){
+    let iconName
+    switch(route.name){
+        case 'animes':
+            iconName='television'
+        break
+        case 'favorites':
+            iconName='cards-heart'
+        break
+        case 'Top-Animes':
+            iconName='star-face'
+        break
+        case 'search':
+            iconName='magnify'
+        break
+        case 'user':
+            iconName = 'account-circle'
+        break
+    }
+    return(
+        <Icon type='material-community' name={iconName} size={22} color={color}/>
     )
 }
