@@ -8,6 +8,8 @@ import FavoritesStack from "./FavoritesStack";
 import SearchStack from "./SearchStack";
 import TopAnimesStack from "./TopAnimeStack";
 import UserStack from "./UserStack";
+import TiendaStack from "./TiendaStack";
+import GenerosStack from "./GenerosStack";
 //import Animes from '../screens/Animes'
 //import Favorites from "../screens/Favorites";
 //import Search from "../screens/Search";
@@ -33,6 +35,10 @@ export default function Navigation(){
                     component={AnimesStack}
                     options={{title:"Animes"}}
                 />
+                <Tab.Screen name='generos' 
+                    component={GenerosStack}
+                    options={{title:"Generos"}}
+                />
                 <Tab.Screen name='favorites' 
                     component={FavoritesStack}
                     options={{title:"Favoritos"}}
@@ -44,6 +50,10 @@ export default function Navigation(){
                 <Tab.Screen name='Top-Animes' 
                     component={TopAnimesStack}
                     options={{title:"Top 10"}}
+                />
+                <Tab.Screen name='tienda' 
+                    component={TiendaStack}
+                    options={{title:"Tienda"}}
                 />
                 <Tab.Screen name='user' 
                     component={UserStack}
@@ -59,14 +69,20 @@ function screenOptions(route,color){
         case 'animes':
             iconName='television'
         break
+        case 'generos':
+            iconName='shape'
+        break
         case 'favorites':
             iconName='cards-heart'
         break
         case 'Top-Animes':
             iconName='star-face'
-        break
+        break    
         case 'search':
             iconName='magnify'
+        break
+        case 'tienda':
+            iconName='store'
         break
         case 'user':
             iconName = 'account-circle'
