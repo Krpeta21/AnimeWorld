@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     container:{
         paddingTop: 10
     },
-    stretch:{
+    stretch:{        
         width:'100%',
         height: 100,
         resizeMode: 'contain',
@@ -41,23 +41,28 @@ const styles = StyleSheet.create({
     titulo:{
         fontFamily:'Comic Sans MS',
         fontWeight:'bold',
-        fontSize: 19,
+        fontSize: 25,
         marginBottom: 10,
         textAlign:'center'        
     },
     define:{
+        fontFamily:'Comic Sans MS',
         marginBottom: 20,
-        textAlign: 'center'
+        textAlign: 'center',
+        textAlign: 'justify'
     },
     viewBtn:{
         flex:1,
         alignItems: 'center'
     },
     btnStyle:{
-        fontFamily:'Comic Sans MS',
-        backgroundColor:'#E83A14'
+        marginTop: 30,
+        backgroundColor:'#E83A14',
+        borderRadius: 30
+        
     },
     btnContainer:{
-        width: '70%'
+        width: '50%',
+        
     }
 })
