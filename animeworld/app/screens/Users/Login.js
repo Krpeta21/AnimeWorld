@@ -62,9 +62,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     loginText:{
-        marginTop: 15,
-        marginLeft:10,
-        marginRight: 10,
+        fontWeight: 'bold',
+        marginTop: 25,
+        textAlign:'center',
+        fontSize: 25,        
         fontFamily:'Comic Sans MS',
         color: '#E83A14'
 
