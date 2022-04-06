@@ -1,20 +1,24 @@
-import React from "react"
+import React,{useRef} from "react"
 import { StyleSheet , View, ScrollView, Text, Image} from "react-native"
 import { Divider } from "react-native-elements"
 import { useNavigation } from "@react-navigation/native"
+import Toast from "react-native-toast-message"
+import LoginForm from "../../components/User/LoginForm"
 
 export default function Login(){
+    const toastRef = useRef()
     return(
-        <ScrollView>
+        <ScrollView style={styles.fondo}>
         <Image
         source={require('../../../assets/img/logoAW.png')}
         resizeMode='contain'
         style={styles.logo}
         />
         <View style={styles.viewContainer}>
-            <Text style = {styles.loginText}>Iniciar sesión</Text>
+            <LoginForm toastRef={toastRef}/>
             <CreateUser/>
         </View>
+        <Toast ref={toastRef}/>
         <Divider  style={styles.divider}/>
     </ScrollView>
     )   
@@ -43,8 +47,7 @@ const styles = StyleSheet.create({
     },
     viewContainer:{
         marginRight:40,
-        marginLeft: 40,
-        fontFamily:'Comic Sans MS'
+        marginLeft: 40        
     },
     divider:{
         backgroundColor: '#E83A14',
@@ -54,10 +57,9 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginLeft:10,
         marginRight: 10,
-        fontFamily:'Comic Sans MS'
+        textAlign: 'center'        
     },
-    linkRegister:{
-        fontFamily:'Comic Sans MS',
+    linkRegister:{        
         color: '#E83A14',
         fontWeight: 'bold'
     },
@@ -66,8 +68,10 @@ const styles = StyleSheet.create({
         marginTop: 25,
         textAlign:'center',
         fontSize: 25,        
-        fontFamily:'Comic Sans MS',
         color: '#E83A14'
 
+    },
+    fondo:{
+        backgroundColor: '#FFF1BD'
     }
 })
