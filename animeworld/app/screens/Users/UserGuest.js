@@ -38,15 +38,13 @@ const styles = StyleSheet.create({
         marginBottom: 40
 
     },
-    titulo:{
-        fontFamily:'Comic Sans MS',
+    titulo:{        
         fontWeight:'bold',
         fontSize: 25,
         marginBottom: 10,
         textAlign:'center'        
     },
-    define:{
-        fontFamily:'Comic Sans MS',
+    define:{        
         marginBottom: 20,
         textAlign: 'center',
         textAlign: 'justify'

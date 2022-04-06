@@ -28,8 +28,7 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderRadius: 25
     },
-    text:{
-       fontFamily:'Comic Sans MS',
+    text:{       
        fontWeight:'bold',
        color:'#E83A14',
        textTransform: 'uppercase',

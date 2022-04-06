@@ -7,7 +7,7 @@ import Toast from 'react-native-toast-message'
 export default function Register(){
     const toastRef = useRef()
     return(
-        <KeyboardAwareScrollView>         
+        <KeyboardAwareScrollView style={styles.fondo}>         
                 <Image 
                 source={require('../../../assets/img/pc2.png')}
                 resizeMode='contain'
@@ -31,5 +31,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 150,
         marginTop: 20
+    },
+    fondo:{
+        backgroundColor: '#FFF1BD'
     }
 })

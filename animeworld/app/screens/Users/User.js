@@ -4,6 +4,7 @@ import firebase  from "firebase"
 import UserGuest from "./UserGuest";
 import UserLogged from './UserLogged'
 import Loading from "../../components/Loading";
+import Login from "./Login";
 
 export default function Account(){
     const [login, setLogin]= useState(null)
@@ -17,6 +18,6 @@ export default function Account(){
 
     if(login === null) return <Loading isVisible = {true} text = 'Espere un momento...'/>
 
-    return login ? <UserLogged/> : <UserGuest/>
+    return login ? <UserLogged/> : <Login/>
 
 }
