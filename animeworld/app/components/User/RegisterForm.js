@@ -2,29 +2,84 @@ import React, {useState} from "react"
 import { StyleSheet, View, Text} from 'react-native'
 import { Input, Icon, Button } from 'react-native-elements'
 import { validateEmail } from '../../utils/validation'
-export default function RegisterForm(){
+import firebase from "firebase"
+import { useNavigation } from "@react-navigation/native"
+
+export default function RegisterForm(props){
+    const {toastRef} = props
     const[showPassword, setShowPassword] = useState(false)
     const[showRepeatPassword, setShowRepeatPassword] = useState(false)
     const [formData, setFormData] = useState(defaultFormValues())
+    const navigation = useNavigation()
 
     const onSubmit = () => {
         if(formData.usuario.length===0||formData.email.length===0||formData.password.length===0||formData.repeatPassword.length===0){
-            console.log('Rellena todos los campos')
+            toastRef.current.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Vacio',
+                text2: 'Necesitas llenar todo los campos 😖',
+                visibilityTime: 3000,
+                autoHide: true,
+                topOffset: 30,
+                bottomOffset: 40
+            });
         } else if(!validateEmail(formData.email)){
-            console.log('Email invalido')
+            toastRef.current.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Correo',
+                text2: 'Email invalido 🙁',
+                visibilityTime: 3000,
+                autoHide: true,
+                topOffset: 30,
+                bottomOffset: 40
+            });
         } else if(formData.password !== formData.repeatPassword){
-            console.log('Las contraseñas deben coincidir')
+            toastRef.current.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Contraseña',
+                text2: 'Las contraseñas no coinciden 😵‍',
+                visibilityTime: 3000,
+                autoHide: true,
+                topOffset: 30,
+                bottomOffset: 40
+            });
         } else if(formData.password.length < 6){
-            console.log('El minimo del password es de 6 caracteres')
+            toastRef.current.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Password',
+                text2: 'La contraseña debe contener por lo menos 6 caracteres 😓',
+                visibilityTime: 3000,
+                autoHide: true,
+                topOffset: 30,
+                bottomOffset: 40
+            });
         }else{
-            console.log('Cuenta Creada')
+            firebase
+          .auth()
+          .createUserWithEmailAndPassword(formData.email, formData.password)
+          .then((response)=>{
+            navigation.navigate('user')
+        })
+        .catch(()=>{
+            toastRef.current.show({
+                type: 'error',
+                position: 'top',
+                text1: 'Cuenta',
+                text2: 'Este correo ya fue utilizado 😡',
+                visibilityTime: 3000,
+                autoHide: true,
+                topOffset: 30,
+                bottomOffset: 40
+            });
+        })
         }
     }
 
     const onChange = (e,type) =>{
-        // console.log(type)
-        // console.log(e.nativeEvent.text)
-        //setFormData({[type]: e.nativeEvent.text})
         setFormData({...formData,[type]: e.nativeEvent.text})
     }
 
@@ -70,7 +125,7 @@ export default function RegisterForm(){
                     />}                    
             />
             <Button
-                title='Unete'
+                title='Registrate'
                 containerStyle={styles.btnCointainerRegister}
                 buttonStyle={styles.btnRegister}
                 onPress={onSubmit}
