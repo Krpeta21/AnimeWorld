@@ -4,11 +4,12 @@ import { Divider } from "react-native-elements"
 import { useNavigation } from "@react-navigation/native"
 import Toast from "react-native-toast-message"
 import LoginForm from "../../components/User/LoginForm"
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 export default function Login(){
     const toastRef = useRef()
     return(
-        <ScrollView style={styles.fondo}>
+        <KeyboardAwareScrollView style={styles.fondo}>
         <Image
         source={require('../../../assets/img/logoAW.png')}
         resizeMode='contain'
@@ -20,7 +21,7 @@ export default function Login(){
         </View>
         <Toast ref={toastRef}/>
         <Divider  style={styles.divider}/>
-    </ScrollView>
+    </KeyboardAwareScrollView>
     )   
 }
 
