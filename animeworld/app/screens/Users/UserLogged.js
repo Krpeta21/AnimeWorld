@@ -20,7 +20,7 @@ export default function UserLogged(){
     }, [reloadUserInfo])
 
     return(
-        <KeyboardAwareScrollView>
+        <KeyboardAwareScrollView style={styles.fondo}>
         <View style={styles.viewUserInfo}>
             {userInfo&&(<InfoUser userInfo={userInfo} toastRef={toastRef} setReloadUserInfo={setReloadUserInfo} />)}
             <UserOptions userInfo = {userInfo} toastRef={toastRef} setReloadUserInfo={setReloadUserInfo}/>
@@ -37,25 +37,25 @@ export default function UserLogged(){
 const styles = StyleSheet.create({
     viewUserInfo:{
       minHeight:'100%',
-      backgroundColor: '#f2f2f2'  
+      backgroundColor: '#FFF1BD'  
     },
     btnCointainerSignOut:{       
-        width: '85%',
+        width: '50%',
         borderRadius:30,
-        marginLeft: 40 ,
+        marginLeft: 100 ,
+        marginTop:50,
         borderTopWidth: 1,
-        borderTopColor: '#e3e3e3',
+        borderTopColor: '#E83A14',
         borderBottomWidth: 1,
-        borderBottomColor: '#e3e3e3',
+        borderBottomColor: '#E83A14',
         paddingTop: 10,
         paddingBottom: 10
         
     },
-    btnSignOut:{
-        
-        backgroundColor:'#E83A14'
-       
-        
-       
+    btnSignOut:{       
+        backgroundColor:'#E83A14' 
+    },
+    fondo:{
+        backgroundColor: '#FFF1BD'
     }
 })

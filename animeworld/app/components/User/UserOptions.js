@@ -3,6 +3,9 @@ import {render} from "react-dom"
 import { StyleSheet, View, Text} from "react-native"
 import { ListItem , Icon} from "react-native-elements"
 import Modal from "../Modal"
+import ChangeDisplayNameform from "./ChangeDisplayNameForm"
+import ChangeDisplayEmail from "./ChangeDisplayEmail"
+import ChangeDisplayPassword from "./ChangeDisplayPassword"
 
 export default function UserOptions(props){
     const {userInfo, toastRef, setReloadUserInfo} = props
@@ -13,7 +16,7 @@ export default function UserOptions(props){
         switch(key){
             case 'displayName':
                 setRenderComponent(
-                    <ChangeDisplayNameForm
+                    <ChangeDisplayNameform
                         displayName={userInfo.displayName}
                         setShowModal={setShowModal}
                         toastRef={toastRef}
@@ -37,7 +40,7 @@ export default function UserOptions(props){
                     setShowModal={setShowModal}                                        
                     />)
                 setShowModal(true)
-                break
+                break            
             default:
                 setRenderComponent(null)
                 setShowModal(false)
@@ -47,10 +50,10 @@ export default function UserOptions(props){
     const menuOptions = generateOptions(selectedComponent)
 
     return (
-        <View>
+        <View >
             {menuOptions.map((menu, index)=>(
-                <ListItem key={index} bottomDivider onPress={menu.onPress}>
-                    <Icon name = {menu.IconNameLeft}/>
+                <ListItem key={index} bottomDivider onPress={menu.onPress} >
+                    <Icon name = {menu.iconNameLeft}/>
                     <ListItem.Content>
                         <ListItem.Title>{menu.title}</ListItem.Title>
                     </ListItem.Content>
@@ -69,25 +72,21 @@ function generateOptions(selectedComponent){
     return[
        
         {
-            title: 'Cambiar nombre y apellidos',
-            IconNAmeLeft: 'account-circle',
+            title: 'Cambiar nombre y apellido',
+            iconNameLeft: 'account-circle',
             onPress: ()=> selectedComponent('displayName')
         },
 
         {
             title: 'Cambiar email',
-            IconNAmeLeft: 'drafts',
+            iconNameLeft: 'drafts',
             onPress: ()=> selectedComponent('displayEmail')
         },
         {
             title: 'Cambiar password',
-            IconNAmeLeft: 'lock',
+            iconNameLeft: 'lock',
             onPress: ()=> selectedComponent('displayPassword')
-        },
-        {
-            title: 'Cambiar numero de telefono',
-            IconNAmeLeft: 'account-circle',
-            onPress: ()=> selectedComponent('phoneNumber')
-        },
+        }        
     ]
 }
+

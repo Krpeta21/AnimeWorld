@@ -94,10 +94,7 @@ return(
         <View>
             <Text style={styles.displayName}>
                 {displayName ? displayName : 'Invitado'}
-            </Text>
-            <Text style={styles.txt}>
-                {phoneNumber ? phoneNumber : 'Desconocido'}
-            </Text>
+            </Text>            
             <Loading isVisible = {loading} text = 'Cargando...'/>
             <Text style={styles.txt}> {email ? email : 'Entrada por correo.'}</Text>
         </View>
@@ -109,7 +106,7 @@ const styles = StyleSheet.create({
 viewUserInfo:{
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#FFF1BD',
     paddingTop: 30,
     paddingBottom: 30,
     
@@ -126,5 +123,8 @@ marginTop: 5
 },
 txt:{
     textAlign: "center"
+},
+fondo:{
+    backgroundColor: '#FFF1BD'
 }
 })
