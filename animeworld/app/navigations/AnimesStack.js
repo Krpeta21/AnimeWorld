@@ -1,6 +1,6 @@
 import React from "react"
 import {createStackNavigator} from '@react-navigation/stack'
-import Animes from "../screens/Animes"
+import Animes from "../screens/Animes/Animes"
 
 const Stack = createStackNavigator()
 
